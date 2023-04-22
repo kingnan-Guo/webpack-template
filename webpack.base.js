@@ -2,6 +2,7 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
     entry:{
         main: "./src/index.js",
@@ -45,31 +46,40 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: "./public/index.html"
-        }),
-        new HtmlWebpackPlugin({
-            template: "./public/index.html",
-            filename: "main-[hash:5].html",
+            template: "./public/template.html",
+            filename: "a-[hash:5].html",
             // filename: "index-[hash:5].html",
             // filename: "index.html",
-            chunks: [ 'main' ] //default 默认值: [all]
-        }),
-        new HtmlWebpackPlugin({
-            template: "./public/index.html",
-            filename: "a-[hash:5].html",
             chunks: [ 'a' ] //default 默认值: [all]
         }),
+        new HtmlWebpackPlugin({
+            template: "./public/template.html",
+            // filename: "main-[hash:5].html",
+            // filename: "main.html",
+            // filename: "index-[hash:5].html",
+            filename: "index.html",
+            chunks: [ 'main' ] //default 默认值: [all]
+        }),
+        
+        // new HtmlWebpackPlugin({
+        //     template: "./public/template.html",
+        //     filename: "a-[hash:5].html",
+        //     chunks: [ 'a' ] //default 默认值: [all]
+        // }),
+
+        new CopyPlugin({
+          patterns: [
+            {
+              from: "./public",
+              to: "./",
+            },
+          ],
+        }),
+
+
     ],
-    devServer: {
-        port: 8008,
-        open: true,
-        proxy: { //代理规则
-            "/api": {
-                target: "http://open.duyiedu.com",
-                changeOrigin: true //更改请求头中的host和origin
-            }
-        }
-    },
+
+    
     stats: {
         modules: false,
         colors: true
