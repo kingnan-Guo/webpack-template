@@ -1,3 +1,12 @@
+/*!
+ * 
+ *             hash:2559b8c6f576a9177ba9,
+ *             chunkhash:[],
+ *             name:main,
+ *             author: kingnan,
+ *             corporation: heartControl
+ *
+ */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -26,6 +35,8 @@ var img = document.createElement('img')
 img.src = src
 document.body.appendChild(img);
 module.exports = "cbcd c"
+
+console.log('PI ==',Math.PI);
 
 /***/ })
 
@@ -64,4 +75,4 @@ module.exports = "cbcd c"
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main-ce902.js.map
+//# sourceMappingURL=main-2559b.js.map

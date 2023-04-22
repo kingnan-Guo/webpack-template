@@ -7,3 +7,5 @@ var img = document.createElement('img')
 img.src = src
 document.body.appendChild(img);
 module.exports = "cbcd c"
+
+console.log('PI ==',PI);

@@ -3,12 +3,13 @@ const path = require('path')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin");
-
+const webpack = require("webpack")
 module.exports = {
     entry:{
         main: "./src/index.js",
         a: "./src/a.js",
-        fileLoad:"./src/fileLoad.js"
+        fileLoad:"./src/fileLoad.js",
+        lodashTest:"./src/lodashTest.js"
     },
     output: {
         filename: "scripts/[name].[chunkhash:5].js"
@@ -74,7 +75,7 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(), //在 开发环境中 和生产环境中
         new HtmlWebpackPlugin({
             template: "./public/template.html",
             filename: "a-[hash:5].html",
@@ -85,10 +86,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./public/template.html",
             // filename: "main-[hash:5].html",
-            // filename: "main.html",
+            filename: "main.html",
             // filename: "index-[hash:5].html",
-            filename: "index.html",
-            chunks: [ 'main' ] //default 默认值: [all]
+            // filename: "index.html",
+            chunks: [ 'main','lodashTest' ] //default 默认值: [all]
         }),
         
         // new HtmlWebpackPlugin({
@@ -110,7 +111,26 @@ module.exports = {
             },
           ],
         }),
-
+        // 干预抽象语法书 ast ,在抽象语法树中 找 定义的常量 替换 成常量的value
+        new webpack.DefinePlugin({
+          PI: "Math.PI",//定义常量：  属性字符串的值 就是常量的值, 属性值必须是字符串
+          VERSION: "1.0.0",
+          DOMAIN: JSON.stringify("kingnan")
+        }),
+        // 为每一个打包好后的chunk 生成一行注释
+        new webpack.BannerPlugin({
+          banner:`
+            hash:[hash],
+            chunkhash:[],
+            name:[name],
+            author: kingnan,
+            corporation: heartControl
+          `
+        }),
+        // 组件中不用引入loadsh ， ProvidePlugin 会帮忙 引入
+        new webpack.ProvidePlugin({
+          _:"lodash"
+        })
 
     ],
 

@@ -1,3 +1,12 @@
+/*!
+ * 
+ *             hash:2559b8c6f576a9177ba9,
+ *             chunkhash:[],
+ *             name:fileLoad,
+ *             author: kingnan,
+ *             corporation: heartControl
+ *
+ */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -178,4 +187,4 @@ module.exports = "dataJson"
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=fileLoad-ce902.js.map
+//# sourceMappingURL=fileLoad-2559b.js.map

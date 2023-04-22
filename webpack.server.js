@@ -8,9 +8,12 @@ module.exports =   {
     //     filename:"script/[name]-[hash:5].js"
     // },
     devServer: {
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
         port: 8010,
-        open: true,
-        // index: "main.html",
+        // open: true,
+        open: ['/main.html'],
         server: 'https',
         proxy: { //代理规则
             "/api": {
@@ -19,4 +22,5 @@ module.exports =   {
             }
         }
     },
+    plugins: []
 }
