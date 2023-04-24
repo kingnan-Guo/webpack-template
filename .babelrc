@@ -1,3 +1,16 @@
 {
-    "presets": ["@babel/preset-env"]
+    "presets": [
+        ["@babel/preset-env", {//预设  转换正式标准的语法,执行顺序 从后向前
+            "useBuiltIns": "usage",
+            "corejs": "3.30.1"
+        }]
+    ],
+    "plugins": [// 执行顺序 从前向后
+        ["@babel/plugin-proposal-class-properties", {
+            "loose": false, //宽松的规范
+        }], 
+        "@babel/plugin-proposal-function-bind",
+        // "babel-plugin-transform-remove-consoles"//去除所有 console
+
+    ]
 }
