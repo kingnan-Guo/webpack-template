@@ -1,0 +1,1 @@
+{"version":3,"file":"script/hot-4ded8.js","mappings":";;;;;;;;;;;;;;AAAA;;AAGA;AACA,IAAGA,KAAU,EAAC","sources":["webpack://webpack-template/./src/hot.js"],"sourcesContent":["// import a from \"./a\";\r\n\r\n\r\n// 是否开启热更新\r\nif(module.hot){\r\n    // console.log(\"kingnan = \", a);\r\n    module.hot.accept()\r\n}"],"names":["module","hot","accept"],"sourceRoot":""}

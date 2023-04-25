@@ -1,0 +1,1 @@
+console.log("loadsh =", _.drop([1, 2, 3, 6], 3));
