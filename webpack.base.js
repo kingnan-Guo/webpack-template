@@ -2,19 +2,14 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const CopyPlugin = require("copy-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const fileListPlugin = require("./plugins/fileListPlugin")
-
 const webpack = require("webpack")
 module.exports = {
     entry:{
         main: "./src/index.js",
         a: "./src/a.js",
         fileLoad:"./src/fileLoad.js",
-        lodashTest:"./src/lodashTest.js",
-        hot: "./src/hot.js",
-        
+        lodashTest:"./src/lodashTest.js"
     },
     output: {
         filename: "scripts/[name].[chunkhash:5].js"
@@ -35,27 +30,27 @@ module.exports = {
         }
     },
     module:{
-      rules: [{
+        rules: [{
             test: /\.css$/,
             use:["./loaders/load-style.js"]
-      }, {
-        test:/\.(png)|(gif)$/,
-        use:[{
-            loader: "./loaders/img-loader.js",
+        },{
+            test:/\.(png)|(gif)$/,
+            use:[{
+                loader: "./loaders/img-loader.js",
+                options:{
+                    limit: 3000,
+                    filename:"img-[contenthash:5].[ext]"
+                }
+            }]
+        },{
+          test: /\.(jpeg)$/,
+          use:[{
+            loader: "file-loader",
             options:{
-                limit: 3000,
-                filename:"img-[contenthash:5].[ext]"
+              name:"imgs/img-[name]-[contenthash:5].[ext]"// 引用图片
             }
-        }]
-      }, {
-        test: /\.(jpeg)$/,
-        use:[{
-          loader: "file-loader",
-          options:{
-            name:"imgs/img-[name]-[contenthash:5].[ext]"// 引用图片
-          }
-        }]
-      }, {
+          }]
+      },{
         test: /\.(jpg)$/,
         use:[{
           loader: "url-loader",//图片转 Base64
@@ -65,28 +60,7 @@ module.exports = {
             name:"imgs/img-[name]-[contenthash:5].[ext]"// 引用图片
           }
         }]
-      },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'babel-loader',
-      //   // include: [resolve('src')]
-      // }, 
-      {
-        test: /\.js$/,
-        exclude: /loadsh/, //排除loadsh
-        include: /src/, //只管src目录文件解析 path.resolve('src')
-        use: [
-          // 开启多线程
-          'thread-loader', 
-          // {
-          //   loader: 'cache-loader',
-          //   options:{
-          //     cacheDirectory: "./cache"//缓存文件
-          //   }
-          // },
-         'babel-loader'],
-        // include: [resolve('src')]
-      }
+      } 
       // {
       //   test: /\.(json)$/,
       //   use:[{
@@ -96,12 +70,8 @@ module.exports = {
       //     }
       //   }]
       // }
-      ],  //模块匹配规则
-      // noPars:哪些模块不要解析
-      noParse: /lodash/,// 不去解析 不做抽象语法树分析，把 lodash 直接引用过来
-
-
-
+    ],  //模块匹配规则
+        // noPars:哪些模块不要解析
     },
 
     plugins: [
@@ -121,7 +91,7 @@ module.exports = {
             // filename: "index.html",
             chunks: [ 'main','lodashTest' ] //default 默认值: [all]
         }),
-
+        
         // new HtmlWebpackPlugin({
         //     template: "./public/template.html",
         //     filename: "a-[hash:5].html",
@@ -160,14 +130,8 @@ module.exports = {
         // 组件中不用引入loadsh ， ProvidePlugin 会帮忙 引入
         new webpack.ProvidePlugin({
           _:"lodash"
-        }),
-        new webpack.DllPlugin({
-          path: path.resolve(__dirname, "dll", "[name].manifest.json"),
-          name: '[name]'
-        }),
-        new fileListPlugin({
-          filename: "allFileName.md"
-        }),
+        })
+
     ],
 
     

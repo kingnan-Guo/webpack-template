@@ -11,7 +11,7 @@ module.exports =   {
         static: {
             directory: path.join(__dirname, 'public'),
         },
-        port: 8010,
+        port: 8050,
         // open: true,
         open: ['/main.html'],
         server: 'https',
