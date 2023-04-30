@@ -1,3 +1,1 @@
-# webpack-template
-关于 webpack 的一些配置总结
-模块联邦
+npm i  webpack webpack-cli html-webpack-plugin webpack-dev-server style-loader css-loader -D
