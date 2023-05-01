@@ -2,6 +2,8 @@
 关于 webpack 的一些配置总结
 webpack-vue
 
+# webpack-vue
+webpack 创建 vue 运行环境 serve 可运行，  使用 lib 打包 并引入到项目中 
 
 
 
