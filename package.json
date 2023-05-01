@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "npx webpack serve",
-    "dev": "npx webpack "
+    "dev": "npx webpack  --env prod",
+    "lib": "npx webpack --env lib"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,8 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
+    "custom-icc": "^1.0.2",
+    "custom-ice": "^1.0.1",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.3.0",
@@ -30,7 +33,8 @@
     "vue-router": "^4.1.6",
     "vuex": "^4.1.0",
     "webpack": "^5.80.0",
-    "webpack-cli": "^5.0.2"
+    "webpack-cli": "^5.0.2",
+    "webpack-lib-dist-test": "^1.0.2"
   },
   "devDependencies": {
     "less": "^4.1.3",

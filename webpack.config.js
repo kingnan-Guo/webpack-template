@@ -1,89 +1,40 @@
-const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin"); // 处理静态资源
-const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // 清除 dist 目录
-const HtmlWebpackPlugin = require("html-webpack-plugin"); // 处理模板页面
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var baseConfig = require("./webpack.base.config")
+// var devConfig = require("./webpack.dev")
+// var proConfig = require("./webpack.pro")
+var serConfig = require("./webpack.server.config")
+var libConfig = require("./webpack.lib.config")
 
-const { VueLoaderPlugin } = require("vue-loader")
-// const VueLoaderPlugin = require("vue-loader/lib/plugin");
+module.exports = (env) => {
+    console.log("module.exports env ==", env);
+    if(env && env.prod){
+        const config = {
+            ...baseConfig,
+        }
+        return config
+    } else if(env && env.dev) {
+        // const config = {
+        //     ...baseConfig,
+        //     ...devConfig
+        // }
+        // config.plugins = [...baseConfig.plugins, ...devConfig.plugins]
+        // config.plugins = [...baseConfig.plugins, ...devConfig.plugins]
+        // return config
+    } else if(env && env.lib)  {
+        console.log("===lib===", serConfig);
+        const config = {
+            ...baseConfig,
+            ...libConfig
+        }
+        console.log("lib config =", config);
+        return config
+    } else  {
+        console.log("===server===", serConfig);
+        const config = {
+            ...baseConfig,
+            ...serConfig
+        }
+        config.plugins = [...baseConfig.plugins, ...serConfig.plugins]
+        return config
+    }
 
-const pathResolve = _path => path.resolve(__dirname, _path)
-module.exports = {
-    entry: "./src/main.js",
-    mode: "development",
-    devtool: "source-map",
-    output: {
-        filename: "static/js/[name].[chunkhash:5].js",
-        path: pathResolve('dist')
-    },
-    resolve: {
-        alias: {
-          '@': pathResolve('./src'),
-        },
-    },
-
-    devtool: "inline-source-map",
-    devServer: {
-        open: true,
-        port: 9060,
-        proxy: {},
-    },
-    plugins:[
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            template: pathResolve("./public/index.html"),
-            title: "vue3.0 index",
-            filename: "index.html",
-        }),
-        new CopyPlugin({
-            // patterns: [{
-            //     from: path.resolve(__dirname, "public"),
-            //     to: "./"
-            // }]
-            patterns: [{
-                from: path.resolve(__dirname, "public/static"),
-                to: "./static"
-            }]
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[chunkhash:5].css'
-        }),
-        new VueLoaderPlugin(),
-        // new VueLoaderPlugin(),
-    ],
-    module: {
-        rules: [ {
-                // 各种图片、字体文件，均交给 url-loader 处理
-                test: /\.(png)|(gif)|(jpg)|(svg)|(bmp)|(eot)|(woff)|(ttf)$/i,
-                use: [
-                  {
-                    loader: "url-loader",
-                    options: {
-                      limit: 1024,
-                      name: "static/[name].[hash:5].[ext]",
-                      esModule: false,
-                    },
-                  },
-                ],
-            }, {
-                test: /\.vue$/i,
-                use:"vue-loader"
-            }, {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"]
-            }, {
-                test: /\.less$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader", 'postcss-loader']
-            }, {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/,
-        }]
-    },
-    stats: {
-        colors: true, // 打包时使用不同的颜色区分信息
-        modules: false, // 打包时不显示具体模块信息
-        entrypoints: false, // 打包时不显示入口模块信息
-        children: false, // 打包时不显示子模块信息
-    },
 }
