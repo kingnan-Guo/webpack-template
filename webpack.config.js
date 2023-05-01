@@ -36,9 +36,13 @@ module.exports = {
             filename: "index.html",
         }),
         new CopyPlugin({
+            // patterns: [{
+            //     from: path.resolve(__dirname, "public"),
+            //     to: "./"
+            // }]
             patterns: [{
-                from: path.resolve(__dirname, "public"),
-                to: "./"
+                from: path.resolve(__dirname, "public/static"),
+                to: "./static"
             }]
         }),
         new MiniCssExtractPlugin({
@@ -48,15 +52,32 @@ module.exports = {
         // new VueLoaderPlugin(),
     ],
     module: {
-        rules: [{
-            test: /\.vue$/i,
-            use:"vue-loader"
-        }, {
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, "css-loader"]
-        }, {
-            test: /\.less$/i,
-            use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader", 'postcss-loader']
+        rules: [ {
+                // 各种图片、字体文件，均交给 url-loader 处理
+                test: /\.(png)|(gif)|(jpg)|(svg)|(bmp)|(eot)|(woff)|(ttf)$/i,
+                use: [
+                  {
+                    loader: "url-loader",
+                    options: {
+                      limit: 1024,
+                      name: "static/[name].[hash:5].[ext]",
+                      esModule: false,
+                    },
+                  },
+                ],
+            }, {
+                test: /\.vue$/i,
+                use:"vue-loader"
+            }, {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"]
+            }, {
+                test: /\.less$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader", 'postcss-loader']
+            }, {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
         }]
     },
     stats: {

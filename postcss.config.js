@@ -1,3 +1,3 @@
-// module.exports = {
-//     autoprefixer: require("autoprefixer")
-// }
+module.exports = {
+    autoprefixer: require("autoprefixer")
+}

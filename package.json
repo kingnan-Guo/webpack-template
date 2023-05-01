@@ -5,13 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "npx webpack serve"
+    "serve": "npx webpack serve",
+    "dev": "npx webpack "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.5",
     "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "babel-preset-vue": "^2.0.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
@@ -19,6 +24,7 @@
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.3.0",
     "style-loader": "^3.3.2",
+    "url-loader": "^4.1.1",
     "vue": "^3.2.47",
     "vue-loader": "^17.0.1",
     "vue-router": "^4.1.6",

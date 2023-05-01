@@ -10,7 +10,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-  { path: '/home', component: () => import('@/views/Home.vue') },
+  { path: '/home', component: () => import('@/views/homePage/Home.vue') },
 //   { path: '/about', component: About },
 ]
 
