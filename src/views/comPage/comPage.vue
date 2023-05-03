@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    <router-link to="/home">home</router-link>
-    <router-link to="/comPage">comPage</router-link>
-    <router-view></router-view>
+    <div class="a"><span>comPage</span></div>
+    <div class="b">123</div>
   </div>
 </template>
 
 <script>
 import { ref, computed, watch, getCurrentInstance, onMounted } from "vue";
 export default {
-    name:"App",
+    name:"comPage",
     setup(prpos, { next }) {
       console.log("prpos ==", prpos, "next ==", next)
       // console.log("app setup ===", this.$route, this.$user);
