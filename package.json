@@ -9,7 +9,8 @@
     "build": "npx webpack  --env prod",
     "serve": "webpack-dev-server",
     "babel": "babel src/babelTest -d babel_dist",
-    "dll": "npx webpack  --env dll "
+    "dll": "npx webpack  --env dll ",
+    "debug": "node --inspect-brk ./node_modules/webpack-cli/bin/cli.js"
   },
   "author": "",
   "license": "ISC",

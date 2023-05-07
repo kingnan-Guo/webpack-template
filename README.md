@@ -14,3 +14,6 @@ tree shaking
 package.json  中配置  "sideEffects": false  全局代码无副作用 ， tree shaking 会执行的大胆一些
 "sideEffects": ["!src/common.js"] 只有  common 无副作用
 --legacy-peer-deps
+
+
+npm run debug
