@@ -5,6 +5,7 @@ class SyncHookCodeFactory  extends HookCodeFactory {
         return this.callTapsSeries()
     }
 }
+// 同步的 hook 所以将 sync类型的 直接赋值给 factory
 const factory = new SyncHookCodeFactory()
 
 function COMPILE(options) {
@@ -14,7 +15,7 @@ function COMPILE(options) {
     return factory.create(options)
 }
 
-
+// 源码的为传统类 的书写方式
 function SyncHook(args=[], name=undefined) {
     // 实例继承 函数式继承
     let hook = new Hook(args, name);

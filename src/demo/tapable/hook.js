@@ -9,7 +9,7 @@
 const CALL_DELEGATE = function (...args) {
     //目的是将 注册的函数 依次拿出来执行一下
     // _createCall 返回结果 是 fn
-    this.call = this._createCall('aync');
+    this.call = this._createCall('sync');
     // 执行fn
     return this.call(...args)
 }
@@ -36,7 +36,7 @@ class Hook{
         this._tap('sync', option, fn)
     }
     _tap(type, option, fn){
-        if (typeof(option) === "string") {
+        if (typeof option === "string") {
             option = {
                 name: option.trim()//去掉空格
             }
@@ -52,11 +52,11 @@ class Hook{
     }
     // 创建执行函数
     _createCall(type){
-        this.compile({
+        return this.compile({
             type,
             taps: this.taps,
-            args: this._args
+            _args: this._args
         })
     }
 }
-
+module.exports = Hook
