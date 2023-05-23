@@ -1,4 +1,5 @@
-import { createStore } from "vuex";
+// import { createStore } from "vuex";
+import { createStore } from "@/myVueX/index.js";
 
 const store = {
     // 存放数据 数据响应式

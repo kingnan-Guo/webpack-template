@@ -2,7 +2,7 @@
     <div class="store">
         storePage
 
-        <!-- <div class="vue2">
+        <div class="vue2">
             <div>vue2 写法</div>
             <div>
                 age : <span>{{ this.$store.state.spaceA.age }}</span>
@@ -25,12 +25,12 @@
                 changeAge: {{ changeAge }}
             </div>
 
-        </div> -->
+        </div>
 
 
         <div>--------------</div>
         <div>
-            <!-- <button type="button" @click="$store.state.spaceA.age = 30">changeAge</button> -->
+            <button type="button" @click="$store.state.spaceA.age = 30">changeAge</button>
         </div>
         <div>
             <button type="button" @click="addAge">addAge</button>

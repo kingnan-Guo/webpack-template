@@ -1,6 +1,7 @@
 import { ref, computed } from "vue";
 
-import { useStore } from "vuex";//获取store 实例 provide inject
+// import { useStore } from "vuex";//获取store 实例 provide inject
+import { useStore } from "@/myVueX/index.js";
 
 export default function ages(params) {
     
