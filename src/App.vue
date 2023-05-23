@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <router-link to="/home">home</router-link>
-    <router-link to="/comPage">comPage</router-link>
+    <div>
+      <router-link to="/home">home</router-link>
+    </div>
+    <div>
+      <router-link to="/comPage">comPage</router-link>
+    </div>
+    <div>
+      <router-link to="/storePage">storePage</router-link>
+    </div>
     <router-view></router-view>
   </div>
 </template>

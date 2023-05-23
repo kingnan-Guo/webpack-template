@@ -9,7 +9,8 @@ const { createApp } = vue
 import router from "./router/myIndex"
 
 
-import store from "./store";
+// import store from "./store";
+import store from "./store/myIndex";
 import App from "./App.vue"
 import {customIcc} from "custom-icc";
 import customIce from "custom-ice";

@@ -12,6 +12,7 @@ import VueRouter from "../myRouter"
 const routes = [
   { path: '/home', component: () => import('@/views/homePage/Home.vue') },
   { path: '/comPage', component: () => import('@/views/comPage/comPage.vue') },
+  { path: '/storePage', component: () => import('@/views/storePage/index.vue') },
 //   { path: '/about', component: About },
 ]
 
