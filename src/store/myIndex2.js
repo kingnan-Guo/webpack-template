@@ -44,13 +44,9 @@ const moduleB = {
     mutations: { },
     actions: {}
   }
-// export default createStore({
-//     modules:{
-//         spaceA:store,
-//         spaceB: moduleB
-//     }
-// })
-
 export default createStore({
-    ...store
+    modules:{
+        spaceA:store,
+        spaceB: moduleB
+    }
 })

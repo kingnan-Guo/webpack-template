@@ -11,7 +11,7 @@ const pathResolve = _path => path.resolve(__dirname, _path)
 module.exports = {
     devServer: {
         open: true,
-        port: 9060,
+        port: 9070,
         proxy: {},
     },
     plugins:[]

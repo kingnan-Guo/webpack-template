@@ -41,7 +41,7 @@
 
         <div>==============================</div>
         <!-- <div>{{ this.$store }}</div> -->
-        <div><span>{{ this.$store.state }}</span></div>
+        <div><span>{{ this.$store.state.spaceA }}</span></div>
         <div>{{ this.$store.getters.changeAge }}</div>
     </div>
 </template>
